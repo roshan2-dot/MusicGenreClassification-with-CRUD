@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Music Genre Classifier</title>
+    <link rel = "stylesheet" href ="{%static 'css/result.css'%}">
+</head>
+<body>
+    <div class = "back_arrow">
+        <a href = "{% url 'classify' %}">
+            <img src = "{% static 'images/back key.png' %}" alt = "back_arrow">
+        </a>
+    </div>    
+    <div class ="main_heading">
+        <h2>Music Genre Recognition Process Completed</h2>
+    </div>
+    <div class = "check_image_holder">
+        <img src = "{%static 'images/check.png'%}" alt = "check">
+    </div>
+    <div class="row">
+        <div class="column">
+            <div class="your_genre">
+                <h2>Your Music's Genre is </h2>
+            </div> <!---your_genre--->
+                <div class ="main_result">
+                    <div class = "party_holder-1">
+                        <img class="img-fluid" src="{% static 'images/party_popper1.png' %}" alt="alternative">
+                    </div> <!---party_holder-1--->
+                    <div class = "my_genre">
+                        <div class="card right-pane" style="margin-top: -5rem;">
+                            <div class="card-body">
+                                <div class="card-icon" style="height: 38vh; width: 38vh; margin-top: 6rem; margin-left: 3rem; background-color: blueviolet; border-radius:50%" >
+                                    <h3>
+                                        {{ genre }}
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!---my_genre--->
+                    <div class ="party_holder-2">
+                        <img class="img-fluid" src="{% static 'images/party_popper2.png' %}" alt="alternative">
+                    </div> <!---party_holder-2--->    
+                </div> <!---main_result--->                    
+        </div> <!--- column -->                            
+    </div> <!-- end of row -->
+
+    
+</body>
+</html>    

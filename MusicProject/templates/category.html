@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Genre Classifier</title>
+    {% load static %}
+    <link rel = "stylesheet" href ="{%static 'css/category.css'%}">
+    <!--<script src = "{% static 'javascript/classify.js' %}"></script>-->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <!--Link to use the font awsesome icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!--Header-->
+    <div class= "main_title">
+        <h1>Audio Files</h1>
+    </div> 
+    
+    <!--Navigation Bar-->
+    <div class = "wrapper">
+        <nav>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="navbar-nav">
+                <li>
+                <a href="{% url 'home' %}" class="active active-first">home</a>
+                </li>
+                <li>
+                <a href="{% url 'classify' %}">classify</a>
+                </li>
+                <li>
+                <a href="{% url 'category' %}">audios</a>
+                </li>
+                <li>
+                <a href="{% url 'about' %}">about</a>
+                </li>
+            </ul>
+        </nav>
+    </div><!--End of Navigation Bar-->
+
+    <!--Pre-loader-->
+    <div class="loader-wrapper">
+        <div class="center">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
+    </div> <!--End of Pre-loader-->
+    <!--Main Content-->
+    <div class ="audio_table_title">
+        <h2>Uploaded Audio Files</h2>
+    </div>
+    <div class = "uploaded_audio_table">
+        {% if audi %}
+        <table class = "content-table">
+            <thead>
+                <tr>
+                    <th>Audio ID</th>
+                    <th>Audio Name</th>
+                    <th>Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for audio in audi %}
+            
+                <tr>
+                    <td>{{audio.audio_id}}</td>
+                    <td>{{audio.name}}</td>
+                    <td>
+                        <a href="#editAudioModal-{{forloop.counter}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit" style = "color:#ffc720">&#xE254;</i></a>
+                        <a href="#deleteAudioModal-{{forloop.counter}}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete" style = "color:#d9354f">&#xE872;</i></a>
+                        <!--<audio controls id="audio_player"></audio>-->
+                    </td>
+                </tr>
+            
+            {% endfor %}
+            </tbody>
+        </table>
+            
+        {% else %}
+            <h3>No Audio Uploaded</h3>
+        {% endif %}
+    </div>
+
+	<!-- Edit Modal HTML -->
+    {% for i in audi%}
+	<div id="editAudioModal-{{forloop.counter}}" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action = "/update/{{i.audio_id}}" method = "post">
+                    {% csrf_token %}
+					<div class="modal-header">						
+						<h4 class="modal-title">Edit Employee</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">					
+						<div class="form-group">
+							<label>Audio ID</label>
+							<input name = "audio_id" value = "{{i.audio_id}}"type="number" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Audio Name</label>
+							<input name = "name" value = "{{i.name}}"type="text" class="form-control" required>
+						</div>					
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-info" value="Update">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+	<!-- Delete Modal HTML -->
+    {% for i in audi%}
+	<div id="deleteAudioModal-{{forloop.counter}}" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">						
+						<h4 class="modal-title">Delete Audio File</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">					
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning"><small>You are deleting {{i.name}}</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<a href = "delete/{{i.audio_id}}" type="submit" class="btn btn-danger">Delete</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+
+    <!--script-->
+    <script type="text/javascript">
+
+         //Responsive Navigation toggle//
+         const hamburger = document.querySelector(".hamburger");
+         const navLinks = document.querySelector(".navbar-nav");
+         const links = document.querySelectorAll(".navbar-nav li");
+ 
+         hamburger.addEventListener('click', ()=>{
+         //Animate Links
+         navLinks.classList.toggle("open");
+         links.forEach(link => {
+         link.classList.toggle("fade");
+         });
+ 
+         //Hamburger Animation
+         hamburger.classList.toggle("toggle");
+         });
+
+        //Pre-loader
+        $(window).on("load", function() {
+            $(".loader-wrapper").fadeOut(2000);
+        })   
+    </script>
+</body>
+</html>
+</html>

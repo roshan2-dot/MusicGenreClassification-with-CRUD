@@ -1,0 +1,339 @@
+*{
+  margin: 0;
+  padding:0px
+}
+/*To use the custom font*/
+@font-face {
+font-family: 'sansation_regular';
+src: url("/static/fonts/sansation_regular.ttf");
+}
+body{
+  background-image: url("/static/images/wallpaper2.jpg");
+  padding: 5px;
+  background-repeat: no-repeat;
+  background-size: 1400px 700px;
+  -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+.main_title{
+  display:inline-block;
+}
+.main_title h1{
+  font-size:30px;
+  font-family:sansation_regular,sans-serif;
+  color: #ffff;
+  display: inline-block;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+/*Navigation bar*/
+.wrapper {
+  height: 65px;
+  display: inline-block;
+  align-items: center;
+  justify-content:center;
+  margin-left: 18cm;
+  font-family: sansation_regular,sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav {
+  display: flex;
+  width: 90%;
+}
+
+ul li a {
+  margin-left: 2.5em;
+  padding-bottom: 4px !important;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  margin-top: 40px !important;
+  padding: 0px;
+}
+
+a {
+  text-decoration: none !important;
+  color: #ffffff !important;
+  position: relative !important;
+}
+
+a::after {
+  content:"";
+  top: 80%;
+  border-bottom: 1.5px solid #ffffff;
+  transition: all 0.50s;
+  position: absolute;
+}
+
+a:hover::after {
+  transition: all 0.50s;
+}
+
+a::after {
+  right: 50%;
+  left: 50%;
+}
+
+a:hover::after {
+  right: 0;
+  left: 0;
+}
+/*Styling Hamburger*/
+.hamburger div{
+  width: 30px;
+  height: 3px;
+  background: #f2f5f7;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+.hamburger{
+  display: none;
+}
+
+
+/*Navigation bar ends*/
+
+/*Styling the loader*/
+.center {
+  height: 80vh !important;
+  display: flex  !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.wave {
+  width: 2px !important;
+  height: 50px;
+  background: linear-gradient(45deg, cyan, #fff) !important;
+  margin: 5px;
+  animation: wave 1s linear infinite !important;
+  border-radius: 20px;
+}
+.wave:nth-child(2) {
+  animation-delay: 0.1s  !important;
+}
+.wave:nth-child(3) {
+  animation-delay: 0.2s !important;
+}
+.wave:nth-child(4) {
+  animation-delay: 0.3s !important;
+}
+.wave:nth-child(5) {
+  animation-delay: 0.4s !important;
+}
+.wave:nth-child(6) {
+  animation-delay: 0.5s !important;
+}
+.wave:nth-child(7) {
+  animation-delay: 0.6s !important;
+}
+.wave:nth-child(8) {
+  animation-delay: 0.7s !important;
+}
+.wave:nth-child(9) {
+  animation-delay: 0.8s !important;
+}
+.wave:nth-child(10) {
+  animation-delay: 0.9s !important;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+/*End of loader*/
+
+/*Styling the table title*/
+.audio_table_title h2{
+  font-size: 25px;
+  font-weight: bold;
+  font-family: sansation_regular,sans-serif;
+  color: #ffff;
+  letter-spacing: 2px;
+  margin-left: 20%;
+  margin-top: 5%;
+}
+
+/*Styling the table of intial uploaded file*/
+.uploaded_audio_table{
+  margin-left: 20%;
+}
+.content-table{
+  border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sansation_regular,sans-serif;
+    min-width: 800px !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+.content-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+  font-size: 30px !important;
+}
+.content-table th, .content-table td {
+  padding: 15px 30px !important;
+  font-size: 13px !important;
+}
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd !important;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #a3cef1 !important;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879 !important;
+}
+.content-table tbody tr.active-row {
+  font-weight: bold !important;
+  color: #009879 !important;
+}
+
+
+
+/* Modal styles */
+.modal .modal-dialog {
+max-width: 400px;
+}
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+padding: 20px 30px;
+}
+.modal .modal-content {
+border-radius: 3px;
+}
+.modal .modal-footer {
+background: #ecf0f1;
+border-radius: 0 0 3px 3px;
+}
+.modal .modal-title {
+  display: inline-block;
+}
+.modal .form-control {
+border-radius: 2px;
+box-shadow: none;
+border-color: #dddddd;
+}
+.modal textarea.form-control {
+resize: vertical;
+}
+.modal .btn {
+border-radius: 2px;
+min-width: 100px;
+}	
+.modal form label {
+font-weight: normal;
+}
+
+   /*Responsive part*/
+
+   @media (max-width: 1024px) {
+    .main_title h1{
+      font-size: 14px;
+    }
+    .wrapper {
+      height: auto;
+    }
+    nav{
+      
+      z-index: 3;
+    }
+    .hamburger{
+      display: block;
+      position: absolute;
+      cursor: pointer;
+      right: 5%;
+      padding-bottom: 20%;
+      transform: translate(-5%, -50%);
+      z-index: 2;
+      transition: all 0.7s ease;
+    }
+    .navbar-nav{
+      position: fixed;
+      background: #217bc5;
+      height: 100vh;
+      width: 100%;
+      flex-direction: column;
+      clip-path: circle(50px at 90% -20%);
+      -webkit-clip-path: circle(50px at 90% -10%);
+      transition: all 1s ease-out;
+      pointer-events: none;
+    }
+    .navbar-nav.open{
+      clip-path: circle(1000px at 90% -10%);
+      -webkit-clip-path: circle(1000px at 90% -10%);
+      pointer-events: all;
+      right: 1%
+    }
+    .navbar-nav li{
+      opacity: 0;
+      padding-bottom: 20px;
+      padding-left: 20%;
+    }
+    .navbar-nav li:nth-child(1){
+    
+    transition: all 0.5s ease 0.2s;
+    }
+    .navbar-nav li:nth-child(2){
+      transition: all 0.5s ease 0.4s;
+    }
+    .navbar-nav li:nth-child(3){
+      transition: all 0.5s ease 0.6s;
+    }
+    .navbar-nav li:nth-child(4){
+      transition: all 0.5s ease 0.7s;
+    }
+    li.fade{
+      opacity: 1;
+    }
+    .audio_table_title h2{
+      font-size: 13px;
+      margin-left: 10px;
+    }
+    .uploaded_audio_table{
+      margin-left: 10px;
+    }
+    .content-table{
+      margin: 10px 0;
+      font-size: 10px !important;
+      min-width: 380px !important;
+    }
+    .content-table th{
+      padding: 5px 10px !important;
+      font-size: 11px !important;
+    }
+    .content-table td{
+      padding: 5px 10px !important;
+      font-size: 10px !important;
+    }
+    .modal-dialog{
+      max-width: 350px !important;
+    }
+    .modal .modal-header, .modal .modal-body, .modal .modal-footer {
+      padding: 15px 10px !important;
+    }
+    .modal.btn{
+      min-width: 50px !important;
+    }
+  }

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Genre Classifier</title>
+    {% load static %}
+    <link rel = "stylesheet" href ="{%static 'css/home.css'%}">
+    <!--Link in order to use the icon from iconify-->
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+    <!--Link to use the font awsesome icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Link to use JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+    <!--Header-->
+    <div class= "main_title">
+        <h1>Music Genre Classifier</h1>
+    </div> 
+    
+    <!--Navigation Bar-->
+    <div class = "wrapper">
+        <nav>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="navbar-nav">
+                <li>
+                <a href="{% url 'home' %}" class="active active-first">home</a>
+                </li>
+                <li>
+                <a href="{% url 'classify' %}">classify</a>
+                </li>
+                <li>
+                <a href="{% url 'category' %}">audios</a>
+                </li>
+                <li>
+                <a href="{% url 'about' %}">about</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!--End of Navigation Bar-->
+
+        <!--Pre-loader-->
+        <div class="loader-wrapper">
+            <div class="center">
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+              </div>
+        </div> <!--End of Pre-loader-->
+    
+    <!--Soung wave gif image-->
+    <div class= "logo">
+        <p>
+        {% load static %}<img src= "{% static '/images/sound-wave.gif' %}"/>
+      </p>
+    </div>
+
+    <!--Changing word conatiner-->
+    <div class = "change_it">
+        <h2>Music Genre Classification for <span></span></h2>
+    </div>
+
+    <!--get started button-->
+    <div class="start">
+        <button id="startButton" class="button">Get Started
+            <span class="iconify" data-icon="zondicons:arrow-thin-right"></span>
+        </button>
+    </div>
+    
+    <!--Script for button click event listen and navigate to another page-->
+    <script type="text/javascript">
+        document.getElementById("startButton").onclick = function () {
+        location.href = "{% url 'classify' %}";
+         }; 
+
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".navbar-nav");
+        const links = document.querySelectorAll(".navbar-nav li");
+
+        hamburger.addEventListener('click', ()=>{
+        //Animate Links
+        navLinks.classList.toggle("open");
+        links.forEach(link => {
+        link.classList.toggle("fade");
+        });
+
+        //Hamburger Animation
+        hamburger.classList.toggle("toggle");
+        });
+
+        //Pre-loader fader script
+        $(window).on("load", function() {
+            $(".loader-wrapper").fadeOut(3000);
+        })
+
+    </script>
+</body>
+</html>

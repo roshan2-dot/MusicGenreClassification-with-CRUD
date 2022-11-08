@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Genre Classifier</title>
+    {% load static %}
+    <link rel = "stylesheet" href ="{%static 'css/classify.css'%}">
+    <!--<script src="{% static 'recognize.js' %}" type="text/javascript"></script>-->
+    <!--Link to use the font awsesome icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Link to use Dropzone.js-->
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <!--Link to dropzone.js css-->
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <!--Link to use JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+    <!--Header-->
+    <div class= "main_title">
+        <h1>Music Genre Classification using AI</h1>
+    </div> 
+    
+    <!--Navigation Bar-->
+    <div class = "wrapper">
+        <nav>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="navbar-nav">
+                <li>
+                <a href="{% url 'home' %}" class="active active-first">home</a>
+                </li>
+                <li>
+                <a href="{% url 'classify' %}">classify</a>
+                </li>
+                <li>
+                <a href="{% url 'category' %}">audios</a>
+                </li>
+                <li>
+                <a href="{% url 'about' %}">about</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!--End of Navigation -->
+
+    <!--Pre-loader-->
+    <div class="loader-wrapper">
+        <div class="center">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
+    </div> <!--End of Pre-loader-->
+
+    <!--Main Content-->
+    <!--Drag and drop infomation-->
+    <div class = "drag_info">
+        <h5>Here you can drag and drop your music file or click on the area and upload </h5>
+           <h6> your music file to check genre of the music. Only .wav file is accepted.</h6>
+            {% include 'errormsg.html' %}
+           <h2>CHECK GENRE</h2>
+    <!--Drag and drop area-->
+    <div class="row">
+        <form action="{% url 'result' %}" method="POST" enctype="multipart/form-data" class="up-form" id ="up-form">
+           {% csrf_token %}
+           <input type="file" name='document' multiple="" class="up-input">
+           {{form.as_table}}
+           <img src="{% static 'images/Plus.png' %}" alt="plus" class="plus_icon">
+          <p class="up-p">Drag your music file here or click in this area.</p>
+          <button type="submit" class="btn btn-sm btn-success" style="margin-left: 9rem; width: 30vh;">Check</button>
+        </form>
+    </div> <!-- end of row -->
+</div> <!-- end of drag_info -->
+    <!--Add music and listen-->
+    <div class="add_music">
+        <h5>Add your music and listen.</h5>
+    </div>
+    <form action="upload/" method = "POST" class="dropzone dz" id = "my-dropzone">
+        {% csrf_token %}
+        <div class="dz-message">
+            <img src="{% static 'images/Plus.png' %}" alt="plus" class="plus_icon_second">
+            <p>Drop your audio files here or Click</p>
+        </div>
+        
+        <div class="fallback">
+            <input  required name="file" type="file" id = "audio"/> 
+        </div>
+        
+    </form>
+    <!--Audio Player-->
+    <p>
+        <audio controls id="audio_player"></audio>
+    </p>
+    
+    
+    <!--End of Main Content-->
+    <!--Scripts-->
+    <script type="text/javascript">
+
+        //Responsive Navigation toggle//
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".navbar-nav");
+        const links = document.querySelectorAll(".navbar-nav li");
+
+        hamburger.addEventListener('click', ()=>{
+        //Animate Links
+        navLinks.classList.toggle("open");
+        links.forEach(link => {
+        link.classList.toggle("fade");
+        });
+
+        //Hamburger Animation
+        hamburger.classList.toggle("toggle");
+        });
+
+        //Drag and drop script//
+        Dropzone.autoDiscover = false;
+        
+        var myDropzone = new Dropzone("#my-dropzone", 
+        {url:"upload/", uploadMultile:false, maxFiles:1, maxFilesize:7, acceptedFiles:".mp3,.wav"});
+
+        myDropzone.on("addedfile", function(file) {
+            console.log("File added");
+            var audio = document.getElementById("audio_player");
+            audio.src = URL.createObjectURL(file);
+            audio.load();
+            audio.play();
+        });
+
+        $(document).ready(function(){
+            $('.up-input').change(function () {
+                $('.up-p').text(this.files.length + " file(s) selected");
+            });
+        });
+
+        //Pre-loader fader script
+        $(window).on("load", function() {
+            $(".loader-wrapper").fadeOut(3000);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <center><font size="5" color="red">{{ message }}</font></center>
+  </div>
+{% endfor %}

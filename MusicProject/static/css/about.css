@@ -1,0 +1,427 @@
+*{
+    margin: 0;
+    padding:0px
+}
+/*To use the custom font*/
+@font-face {
+	font-family: 'sansation_regular';
+	src: url("/static/fonts/sansation_regular.ttf");
+}
+body{
+    background-image: url("/static/images/wallpaper2.jpg");
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-size: 1400px 700px;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.main_title{
+    display:inline-block;
+}
+.main_title h1{
+    font-size:30px;
+    font-family:sansation_regular,sans-serif;
+    color: #ffff;
+    display: inline-block;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 15px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+/*Navigation bar*/
+.wrapper {
+    height: 65px;
+    display: inline-block;
+    align-items: center;
+    justify-content:center;
+    margin-left: 18.6cm;
+    font-family: sansation_regular,sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  
+  nav {
+    display: flex;
+    width: 90%;
+  }
+  
+  ul li a {
+    margin-left: 2.5em;
+    padding-bottom: 4px;
+  }
+  
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+  }
+  
+  a::after {
+    content:"";
+    top: 80%;
+    border-bottom: 1.5px solid #ffffff;
+    transition: all 0.50s;
+    position: absolute;
+  }
+  
+  a:hover::after {
+    transition: all 0.50s;
+  }
+  
+  a::after {
+    right: 50%;
+    left: 50%;
+  }
+  
+  a:hover::after {
+    right: 0;
+    left: 0;
+  }
+    /*Styling Hamburger*/
+    .hamburger div{
+      width: 30px;
+      height: 3px;
+      background: #f2f5f7;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+    .hamburger{
+      display: none;
+    }
+
+  /*Navigation bar ends*/
+  
+/*Styling Preloader*/
+.center {
+    height: 80vh !important;
+    display: flex  !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .wave {
+    width: 2px !important;
+    height: 50px;
+    background: linear-gradient(45deg, cyan, #fff) !important;
+    margin: 5px;
+    animation: wave 1s linear infinite !important;
+    border-radius: 20px;
+  }
+  .wave:nth-child(2) {
+    animation-delay: 0.1s  !important;
+  }
+  .wave:nth-child(3) {
+    animation-delay: 0.2s !important;
+  }
+  .wave:nth-child(4) {
+    animation-delay: 0.3s !important;
+  }
+  .wave:nth-child(5) {
+    animation-delay: 0.4s !important;
+  }
+  .wave:nth-child(6) {
+    animation-delay: 0.5s !important;
+  }
+  .wave:nth-child(7) {
+    animation-delay: 0.6s !important;
+  }
+  .wave:nth-child(8) {
+    animation-delay: 0.7s !important;
+  }
+  .wave:nth-child(9) {
+    animation-delay: 0.8s !important;
+  }
+  .wave:nth-child(10) {
+    animation-delay: 0.9s !important;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  /*End of loader*/
+
+  /*Image holder*/
+
+.image_holder{
+    display: inline-block;
+    padding: 20px;
+}
+.image_holder img{
+    display: inline-block;
+    padding: 10px;
+    height: 350px;
+    width: 320px;
+    margin-left: 20px;
+}
+  /*image holder ends*/
+
+  /*About main content holder*/
+  .about_container{
+      padding: 10px;
+      float:right;
+      height: 450px;
+      width: 750px;
+      background-color: #B8A6CF;
+      margin-right: 110px;
+      border-radius: 15px;
+      box-shadow: 3px 4px 4px rgb(65, 63, 63);  
+  }
+  .about_container h4{
+      font-size: 25px;
+      font-family: sansation_regular,sans-serif;
+      padding: 20px;
+      
+  }
+  .details p{
+      font-size: 17px;
+      font-family: 'Montserrat',sans-serif;
+      padding: 20px;
+      text-align: justify;
+      line-height: 1.6;
+  }
+.copy_right h5{
+      font-size: 15px;
+      font-family: 'Montserrat',sans-serif;
+      font-weight:normal;
+      float: right;
+      margin-right: 20px;
+      margin-top: 20px;
+  }
+
+  /*Social Media links*/
+  .social_media{
+      display: inline-block;
+      margin-top: 100px;
+      margin-left: 230px;
+  }
+  textarea {
+    resize: none;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.svg-inline--fa {
+  vertical-align: -0.200em;
+}
+
+.rounded-social-buttons {
+  text-align: center;
+  text-decoration: none;
+}
+
+.rounded-social-buttons .social-button {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  width: 3.125rem;
+  height: 3.125rem;
+  border: 0.125rem solid transparent;
+  padding: 0;
+  text-decoration: none;
+  text-align: center;
+  color: #fefefe;
+  font-size: 1.5625rem;
+  font-weight: normal;
+  line-height: 2em;
+  border-radius: 1.6875rem;
+  transition: all 0.5s ease;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.rounded-social-buttons .social-button:hover, .rounded-social-buttons .social-button:focus {
+  -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+.rounded-social-buttons .fa-twitter, .fa-facebook-f, .fa-linkedin, .fa-youtube, .fa-instagram {
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.rounded-social-buttons .social-button.facebook {
+  background: #3b5998;
+}
+
+.rounded-social-buttons .social-button.facebook:hover, .rounded-social-buttons .social-button.facebook:focus {
+  color: #3b5998;
+  background: #fefefe;
+  border-color: #3b5998;
+}
+
+.rounded-social-buttons .social-button.twitter {
+  background: #55acee;
+}
+
+.rounded-social-buttons .social-button.twitter:hover, .rounded-social-buttons .social-button.twitter:focus {
+  color: #55acee;
+  background: #fefefe;
+  border-color: #55acee;
+}
+
+.rounded-social-buttons .social-button.linkedin {
+  background: #007bb5;
+}
+
+.rounded-social-buttons .social-button.linkedin:hover, .rounded-social-buttons .social-button.linkedin:focus {
+  color: #007bb5;
+  background: #fefefe;
+  border-color: #007bb5;
+}
+
+.rounded-social-buttons .social-button.youtube {
+  background: #bb0000;
+}
+
+.rounded-social-buttons .social-button.youtube:hover, .rounded-social-buttons .social-button.youtube:focus {
+  color: #bb0000;
+  background: #fefefe;
+  border-color: #bb0000;
+}
+
+.rounded-social-buttons .social-button.instagram {
+  background: #125688;
+}
+
+.rounded-social-buttons .social-button.instagram:hover, .rounded-social-buttons .social-button.instagram:focus {
+  color: #125688;
+  background: #fefefe;
+  border-color: #125688;
+}
+  /*Social media liks ends*/
+
+  /*About main container ends*/
+
+
+   /*Responsive part*/
+   @media (max-width: 1024px) {
+    .main_title h1{
+      font-size: 14px;
+    }
+    .image_holder img{
+      height: 120px;
+      width: 100px;
+      margin-left: 90px;
+      margin-top: -20px;
+    }
+    .wrapper {
+      height: auto;
+    }
+    nav{
+      
+      z-index: 3;
+    }
+    .hamburger{
+      display: block;
+      position: absolute;
+      cursor: pointer;
+      right: 5%;
+      padding-bottom: 20%;
+      transform: translate(-5%, -50%);
+      z-index: 2;
+      transition: all 0.7s ease;
+    }
+    .navbar-nav{
+      position: fixed;
+      background: #217bc5;
+      height: 100vh;
+      width: 100%;
+      flex-direction: column;
+      clip-path: circle(50px at 90% -20%);
+      -webkit-clip-path: circle(50px at 90% -10%);
+      transition: all 1s ease-out;
+      pointer-events: none;
+    }
+    .navbar-nav.open{
+      clip-path: circle(1000px at 90% -10%);
+      -webkit-clip-path: circle(1000px at 90% -10%);
+      pointer-events: all;
+      right: 1%
+    }
+    .navbar-nav li{
+      opacity: 0;
+      padding-bottom: 20px;
+      padding-left: 20%;
+    }
+    .navbar-nav li:nth-child(1){
+      transition: all 0.5s ease 0.2s;
+    }
+    .navbar-nav li:nth-child(2){
+      transition: all 0.5s ease 0.4s;
+    }
+    .navbar-nav li:nth-child(3){
+      transition: all 0.5s ease 0.6s;
+    }
+    .navbar-nav li:nth-child(4){
+      transition: all 0.5s ease 0.7s;
+    }
+    li.fade{
+      opacity: 1;
+    }
+    .about_container{
+      height: 350px;
+      width: 300px;
+      margin-right: 40px;
+    }
+    .about_container h4{
+      font-size: 15px;
+      padding-bottom: 0;
+    }
+    .details p{
+      font-size: 10px;
+    }
+    .copy_right h5{
+      font-size: 10px;
+    }
+    .social_media{
+      margin: 0;
+      padding-left: 50px;
+      padding-top: 20px;
+    }
+    .rounded-social-buttons .social-button{
+      width: 1.9rem;
+      height: 1.9rem;
+      font-size: 1.1rem;
+    }
+  }
+
+/*Animating Hamburger Icon on Click*/
+.toggle .line1{
+  transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+  transition: all 0.7s ease;
+  width:0;
+}
+.toggle .line3{
+  transform: rotate(45deg) translate(-5px,-6px);
+}
+

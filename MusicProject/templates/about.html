@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Genre Classifier</title>
+    {% load static %}
+    <link rel = "stylesheet" href ="{%static 'css/about.css'%}">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <!--Link to use the font awsesome icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Link to use JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+    <!--Header-->
+    <div class= "main_title">
+        <h1>About Us</h1>
+    </div> 
+    
+    <!--Navigation Bar-->
+    <div class = "wrapper">
+        <nav>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="navbar-nav">
+                <li>
+                <a href="{% url 'home' %}" class="active active-first">home</a>
+                </li>
+                <li>
+                <a href="{% url 'classify' %}">classify</a>
+                </li>
+                <li>
+                <a href="{% url 'category' %}">audios</a>
+                </li>
+                <li>
+                <a href="{% url 'about' %}">about</a>
+                </li>
+            </ul>
+        </nav>
+    </div><!--End of Navigation Bar-->
+
+    <!--Pre-loader-->
+    <div class="loader-wrapper">
+        <div class="center">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
+    </div> <!--End of Pre-loader-->
+
+    <!--Container for image -->
+    <div class="image_holder">
+        <img src = "{% static 'images/about.png' %}"/>
+    </div>
+
+    <!--About info holder-->
+    <div class = "about_container">
+        <h4>About Us</h4>
+        <!--About details-->
+        <div class = "details">
+            <p>This is a simple system to recognize the different music genres using artificial intelligence (AI). 
+                Convolutional Neural Network (CNN) is used as a algorithm to create a machine learning model. Here,
+                you can simply drag and drop or choose the audio file and the sysytem will recognize the genre of
+                that audio file.
+            </p>
+        </div>
+        <!--Copyright holder-->
+        <div class = "copy_right">
+            <h5> Copyright &copy; 2021-2022 by Roshan Thapa Magar  </h5>
+        </div>
+        <!--Social Media Links-->
+        <div class="social_media">
+            <div class="rounded-social-buttons">
+                <a class="social-button facebook" href="https://www.facebook.com/roshan.lungalimagar" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="social-button twitter" href="https://twitter.com/RoshanT55730761" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="social-button linkedin" href="https://www.linkedin.com/in/roshan-lungali-967441208/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a class="social-button youtube" href="https://www.youtube.com/channel/UCrl6B84E29vzFqQ9gRQFJIg" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        //Responsive Navigation toggle//
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".navbar-nav");
+        const links = document.querySelectorAll(".navbar-nav li");
+
+        hamburger.addEventListener('click', ()=>{
+        //Animate Links
+        navLinks.classList.toggle("open");
+        links.forEach(link => {
+        link.classList.toggle("fade");
+        });
+
+        //Hamburger Animation
+        hamburger.classList.toggle("toggle");
+        });
+
+        $(window).on("load", function() {
+            $(".loader-wrapper").fadeOut(2000);
+        }) 
+    </script>
+</body>
+</html>
